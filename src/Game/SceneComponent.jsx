@@ -27,6 +27,7 @@ const SceneComponent = (props) => {
       const gameRestart = () => {
         console.log("restart");
         scene.dispose();
+        scene = new Scene(engine, sceneOptions);
       };
 
       console.log({ scene });

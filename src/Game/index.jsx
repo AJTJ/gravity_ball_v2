@@ -33,7 +33,7 @@ function getRandom(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-const onSceneReady = (scene) => {
+const onSceneReady = (scene, gameRestart) => {
   //PHYSICS
   var gravityVector = new Vector3(0, -19.81, 0);
   var physicsPlugin = new CannonJSPlugin();
@@ -250,9 +250,7 @@ const onSceneReady = (scene) => {
     button.height = "60px";
     button.color = "white";
     button.background = "green";
-    button.onPointerDownObservable.add(function () {
-      window.dispatchEvent(new Event("game_restart"));
-    });
+    button.onPointerDownObservable.add(() => gameRestart());
     button.onPointerDownObservable.add(() => sceneID++);
     advancedTexture.addControl(button);
   };
